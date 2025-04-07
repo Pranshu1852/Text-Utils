@@ -142,6 +142,7 @@ a{
     display: flex;
     flex-direction: row;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 #mainsection__input{
@@ -168,6 +169,17 @@ a{
 
 .btn--textstyling:nth-child(6){
     text-decoration: line-through;
+}
+
+.mainsection__operationbtns{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.mainsection__operationbtns > button{
+    padding: 15px 20px;
 }
 
 sup {
