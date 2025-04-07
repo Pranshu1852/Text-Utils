@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
@@ -21,17 +22,8 @@
 <body>
     <div class="homepage">
         <div class="navbar">
-            <a class="navbar__logo--link" href="#"><img class="navbar__logo" src="./assets/logo.png" alt="logo"></a>
-            <nav>
-                <ul class="navbar__navlinks">
-                    <li class="navlinks--link"><a href="#">Home</a></li>
-                    <li class="navlinks--link"><a href="#">About</a></li>
-                </ul>
-            </nav>
-            <div class="navbar__buttons">
-                <button class="btn--mode"><img class="icon--mode" src="./assets/light.svg" alt="light mode icon"></button>
-                <button class="btn--dropdown"><img class="icon--menu" src="./assets/menu.svg" alt="dropdown menu icon"></button>
-            </div>
+            <a class="navbar__logo--link" href="#">TextUtils</a>
+            <button class="btn--mode"><img class="icon--mode" src="./assets/light.svg" alt="light mode icon"></button>
         </div>
         <main class="mainsection">
             <h2 class="mainsection__heading">Enter Text To Analyze</h2>
@@ -44,18 +36,37 @@
                 <button class="btn--textstyling">ABC</button>
             </div>
             <textarea name="" id="mainsection__input" rows="15"></textarea>
-            <div class="mainsection__operationbtns">
-                <button class="btn--textstyling">Convert to Uppercase</button>
-                <button class="btn--textstyling">Convert to Lowercase</button>
-                <button class="btn--textstyling">Remove Extra Space</button>
-                <button class="btn--textstyling">Copy to Clipboard</button>
-                <button class="btn--textstyling">Clear Text</button>
-            </div>
-            <div class="mainsection__speechfeature">
-                <h2>Speech Feature</h2>
-                <div class="mainsection__operationbtns">
-                    <button class="btn--textstyling">Listen Now</button>
-                    <button class="btn--textstyling">Stop Now</button>
+            <div class="mainsection__extraoperationwrapper">
+                <button class="btn--extradropdown">Extra Operations <img class="icon--downarrow" src="./assets/downarrow.svg" alt=""></button>
+                <div class="extraopration--dropdown">
+                    <div class="mainsection__operationbtns">
+                        <button class="btn--textstyling">Convert to Uppercase</button>
+                        <button class="btn--textstyling">Convert to Lowercase</button>
+                        <button class="btn--textstyling">Remove Extra Space</button>
+                        <button class="btn--textstyling">Copy to Clipboard</button>
+                        <button class="btn--textstyling">Clear Text</button>
+                    </div>
+        
+                    <div class="mainsection__findreplace">
+                        <h2>Find/Replace Feature</h2>
+                        <div class="findreplace__section">
+                            <div class="findreplace__findfeature">
+                                <input type="text" placeholder="Find Text..." id="find__text">
+                                <button class="btn--textstyling">Find</button>
+                            </div>
+                            <div class="findreplace__replacefeature">
+                                <input type="text" placeholder="Replace Text..." id="replace__text">
+                                <button class="btn--textstyling">Replace</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainsection__speechfeature">
+                        <h2>Speech Feature</h2>
+                        <div class="mainsection__operationbtns">
+                            <button class="btn--textstyling">Listen Now</button>
+                            <button class="btn--textstyling">Stop Now</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

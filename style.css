@@ -87,43 +87,30 @@ a{
     align-items: center;
     background-color: var(--color-green5);
     height: 100px;
-    padding: 10px 25px;
+    padding: 10px 30px;
     box-sizing: border-box;
     box-shadow: 0px 1px 10px var(--shadow-color);
 }
 
-.navbar__logo{
-    width: 100px;
-    filter: drop-shadow(0px 0px 5px var(--shadow-color));
-}
-
-.navbar__navlinks{
+.navbar__logo--link{
     display: flex;
     flex-direction: row;
-    gap: 10px;
-    font-size: 1.2rem;
+    align-items: center;
+    font-size: 60px;
+    font-family: "Rubik Doodle Shadow", system-ui;
     font-weight: var(--font-weight-md);
+    color: #065e3d;
 }
 
-.navbar__buttons{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
-
-.btn--mode,.btn--dropdown{
+.btn--mode{
     padding: 10px;
     background-color: var(--color-green5);
-    border: 2px solid var(--color-white);
+    border: 2px solid #3e6456;
     border-radius: 10px;
 }
 
-.icon--mode,.icon--menu{
+.icon--mode{
     width: 35px;
-}
-
-.btn--dropdown{
-    display: none;
 }
 
 .mainsection{
@@ -152,6 +139,7 @@ a{
     border-radius: 20px;
     padding: 15px;
     font-size: 1.5rem;
+    box-sizing: border-box;
 }
 
 .btn--textstyling{
@@ -173,6 +161,38 @@ a{
     text-decoration: line-through;
 }
 
+.btn--extradropdown{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-md);
+    background-color: var(--color-green6);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px var(--shadow-color);
+}
+
+.icon--downarrow{
+    width: 20px;
+}
+
+.mainsection__extraoperationwrapper{
+    position: relative;
+    width: 100%;
+}
+
+.extraopration--dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 40px auto;
+    width: 95%;
+}
+
 .mainsection__operationbtns{
     display: flex;
     flex-direction: row;
@@ -180,8 +200,40 @@ a{
     flex-wrap: wrap;
 }
 
-.mainsection__operationbtns > button{
+.mainsection__operationbtns > button,.findreplace__section > div > button{
     padding: 15px 20px;
+}
+
+.mainsection__findreplace{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.mainsection__findreplace > h2{
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-md);
+}
+
+.findreplace__section{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.findreplace__findfeature,.findreplace__replacefeature{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.findreplace__findfeature > input,.findreplace__replacefeature > input{
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid var(--color-black);
+    border-radius: 10px;
 }
 
 .mainsection__speechfeature{
@@ -245,11 +297,19 @@ button{
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .navbar__navlinks{
-        display: none;
+
+@media (max-width: 772px) {
+    html{
+        font-size: 12px;
     }
-    .btn--dropdown{
-        display: flex;
+}
+
+@media (max-width: 579px) {
+    html{
+        font-size: 10px;
+    }
+
+    .navbar__logo--link{
+        font-size: 45px;
     }
 }
