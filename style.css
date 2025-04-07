@@ -295,6 +295,15 @@ sup {
 
 button{
     cursor: pointer;
+    transition-duration: 0.12s;
+}
+
+button:hover{
+    opacity: 0.75;
+}
+
+button:active{
+    opacity: 0.65;
 }
 
 
