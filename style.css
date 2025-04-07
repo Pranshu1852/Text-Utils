@@ -1,0 +1,128 @@
+:root{
+    --color-white:#fff;
+    --color-green5:#a4dab9;
+    --color-green8:#edfff4;
+    --color-red: red;
+    --color-black:#000;
+    --color-blue7:#93c3e6;
+    --shadow-color: #00000034;
+    --font-weight-md: 500;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html{
+  font-size: 16px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: auto;
+  font-family: "Montserrat", serif;
+  line-height: 1;
+  background-color: var(--color-green8);
+  min-width: 320px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-green5);
+    height: 100px;
+    padding: 10px 25px;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 10px var(--shadow-color);
+}
+
+.navbar__logo{
+    width: 100px;
+    filter: drop-shadow(0px 0px 5px var(--shadow-color));
+}
+
+.navbar__navlinks{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-md);
+}
+
+.navbar__buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.btn--mode,.btn--dropdown{
+    padding: 10px;
+    background-color: var(--color-green5);
+    border: 2px solid var(--color-white);
+    border-radius: 10px;
+}
+
+.icon--mode,.icon--menu{
+    width: 35px;
+}
+
+.btn--dropdown{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .navbar__navlinks{
+        display: none;
+    }
+    .btn--dropdown{
+        display: flex;
+    }
+}
