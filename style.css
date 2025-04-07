@@ -1,6 +1,8 @@
 :root{
     --color-white:#fff;
+    --color-green2: #065e3d;
     --color-green5:#a4dab9;
+    --color-green6:#BCEAD5;
     --color-green8:#edfff4;
     --color-red: red;
     --color-black:#000;
@@ -161,7 +163,7 @@ a{
     font-weight: var(--font-weight-md);
     min-width: 50px;
     padding: 10px;
-    background-color: #BCEAD5;
+    background-color: var(--color-green6);
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 2px var(--shadow-color);
@@ -191,7 +193,25 @@ a{
 
 .mainsection__speechfeature > h2{
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: var(--font-weight-md);
+}
+
+.mainsection__textsummary{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mainsection__textsummary > h2{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.mainsection__textsummary > p{
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: var(--color-green2);
 }
 
 sup {
