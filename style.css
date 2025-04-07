@@ -1,0 +1,324 @@
+:root{
+    --color-white:#fff;
+    --color-green2: #065e3d;
+    --color-green5:#a4dab9;
+    --color-green6:#BCEAD5;
+    --color-green8:#edfff4;
+    --color-red: red;
+    --color-black:#000;
+    --color-blue7:#93c3e6;
+    --shadow-color: #00000034;
+    --font-weight-md: 500;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html{
+  font-size: 16px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: auto;
+  font-family: "Montserrat", serif;
+  line-height: 1;
+  background-color: var(--color-green8);
+  min-width: 320px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.homepage{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-green5);
+    height: 100px;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 10px var(--shadow-color);
+}
+
+.navbar__logo--link{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 60px;
+    font-family: "Rubik Doodle Shadow", system-ui;
+    font-weight: var(--font-weight-md);
+    color: #065e3d;
+}
+
+.btn--mode{
+    padding: 10px;
+    background-color: var(--color-green5);
+    border: 2px solid #3e6456;
+    border-radius: 10px;
+}
+
+.icon--mode{
+    width: 35px;
+}
+
+.mainsection{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+    width: 70%;
+    margin: auto;
+}
+
+.mainsection__heading{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.mainsection__stylingbtns{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#mainsection__input{
+    width: 100%;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+}
+
+.btn--textstyling{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-md);
+    min-width: 50px;
+    padding: 10px;
+    background-color: var(--color-green6);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px var(--shadow-color);
+}
+
+.btn--textstyling:nth-child(6){
+    text-decoration: line-through;
+}
+
+.btn--extradropdown{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-md);
+    background-color: var(--color-green6);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px var(--shadow-color);
+}
+
+.icon--downarrow{
+    width: 20px;
+}
+
+.mainsection__extraoperationwrapper{
+    position: relative;
+    width: 100%;
+}
+
+.extraopration--dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 40px auto;
+    width: 95%;
+}
+
+.mainsection__operationbtns{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.mainsection__operationbtns > button,.findreplace__section > div > button{
+    padding: 15px 20px;
+}
+
+.mainsection__findreplace{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.mainsection__findreplace > h2{
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-md);
+}
+
+.findreplace__section{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.findreplace__findfeature,.findreplace__replacefeature{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.findreplace__findfeature > input,.findreplace__replacefeature > input{
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid var(--color-black);
+    border-radius: 10px;
+}
+
+.mainsection__speechfeature{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.mainsection__speechfeature > h2{
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-md);
+}
+
+.mainsection__textsummary,.mainsection__preview{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mainsection__preview{
+    margin-bottom: 200px;
+}
+
+.mainsection__textsummary > h2,.mainsection__preview > h2{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.mainsection__textsummary > p,.mainsection__preview > p{
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: var(--color-green2);
+}
+
+sup {
+    font-size: 90%;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    position: absolute;
+}
+sup {
+    top: -0.5em;
+}
+
+.sup--uparrow{
+    top: 0.9em;
+    right: 0.5em;
+}
+
+.sup--downarrow{
+    top: 0.45em;
+    right: 0.6em;
+}
+
+button{
+    cursor: pointer;
+    transition-duration: 0.12s;
+}
+
+button:hover{
+    opacity: 0.75;
+}
+
+button:active{
+    opacity: 0.65;
+}
+
+
+@media (max-width: 772px) {
+    html{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 579px) {
+    html{
+        font-size: 10px;
+    }
+
+    .navbar__logo--link{
+        font-size: 45px;
+    }
+}
