@@ -196,19 +196,23 @@ a{
     font-weight: var(--font-weight-md);
 }
 
-.mainsection__textsummary{
+.mainsection__textsummary,.mainsection__preview{
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.mainsection__textsummary > h2{
+.mainsection__preview{
+    margin-bottom: 200px;
+}
+
+.mainsection__textsummary > h2,.mainsection__preview > h2{
     font-size: 2rem;
     font-weight: bold;
 }
 
-.mainsection__textsummary > p{
+.mainsection__textsummary > p,.mainsection__preview > p{
     font-size: 1.2rem;
     font-weight: 550;
     color: var(--color-green2);
