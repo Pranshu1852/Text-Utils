@@ -182,6 +182,18 @@ a{
     padding: 15px 20px;
 }
 
+.mainsection__speechfeature{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.mainsection__speechfeature > h2{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
 sup {
     font-size: 90%;
     margin: 0;
