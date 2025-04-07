@@ -72,6 +72,12 @@ a{
     color: var(--color-black);
 }
 
+.homepage{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
 .navbar{
     display: flex;
     flex-direction: row;
@@ -116,6 +122,79 @@ a{
 
 .btn--dropdown{
     display: none;
+}
+
+.mainsection{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+    width: 70%;
+    margin: auto;
+}
+
+.mainsection__heading{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.mainsection__stylingbtns{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#mainsection__input{
+    width: 100%;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 1.5rem;
+}
+
+.btn--textstyling{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-md);
+    min-width: 50px;
+    padding: 10px;
+    background-color: #BCEAD5;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px var(--shadow-color);
+}
+
+.btn--textstyling:nth-child(6){
+    text-decoration: line-through;
+}
+
+sup {
+    font-size: 90%;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    position: absolute;
+}
+sup {
+    top: -0.5em;
+}
+
+.sup--uparrow{
+    top: 0.9em;
+    right: 0.5em;
+}
+
+.sup--downarrow{
+    top: 0.45em;
+    right: 0.6em;
+}
+
+button{
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
