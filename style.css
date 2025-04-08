@@ -307,6 +307,15 @@ button:active{
 }
 
 
+@keyframes rotateArrow {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }    
+}
+
 @media (max-width: 772px) {
     html{
         font-size: 12px;

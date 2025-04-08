@@ -1,7 +1,9 @@
 class TextUtils {
     constructor(inputfield) {
         this.inputField=inputfield;
-        this.initialEventListner()
+        this.speechSynth=window.speechSynthesis;
+        this.speechSynth.cancel();
+        this.initialEventListner();
     }
 
     initialEventListner() {
@@ -21,6 +23,22 @@ class TextUtils {
                 }
             });
         });
+
+        document.querySelector('.btn--extradropdown').addEventListener('click',(event)=>{
+            console.log('clicking');
+            
+            const dropdownElement=document.querySelector('.extraopration--dropdown');
+            if(dropdownElement.style.display==='none'){
+                dropdownElement.style.display='flex';
+                console.log();
+                
+                event.target.querySelector('img').style.transform='rotate(-180deg)';
+            }else{
+                dropdownElement.style.display='none';
+
+                event.target.querySelector('img').style.transform='rotate(0deg)';
+            };
+        })
     }
 
     handleButtonClick(element){
@@ -49,6 +67,18 @@ class TextUtils {
                 }
                 case "copy":{
                     this.copyToclipboard(this.inputField);
+                    break;
+                }
+                case "bold":{
+                    this.toBold(this.inputField);
+                    break;
+                }
+                case "startSpeech":{
+                    this.convertToSpeech(this.inputField.value);
+                    break;
+                }
+                case "stopSpeech":{
+                    this.speechSynth.cancel();
                     break;
                 }
                 default:{
@@ -96,6 +126,20 @@ class TextUtils {
         
         
         return newInputStr;
+    }
+
+    toBold(inputField){
+        return inputField.style.fontWeight='bold';
+    }
+
+    convertToSpeech(enteredText) {
+        if (!this.speechSynth.speaking && enteredText.trim().length) {
+            const newUtter = new SpeechSynthesisUtterance(enteredText);
+            this.speechSynth.speak(newUtter);
+        }
+        else{
+            console.log("No Content provided for operation");
+        }
     }
 
     updateInputStr(value) {

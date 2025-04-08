@@ -29,12 +29,12 @@
         <main class="mainsection">
             <h2 class="mainsection__heading">Enter Text To Analyze</h2>
             <div class="mainsection__stylingbtns">
-                <button class="btn--textstyling" disabled>B</button>
-                <button class="btn--textstyling" disabled>U</button>
-                <button class="btn--textstyling" disabled>&#119868;</button>
-                <button class="btn--textstyling" disabled>A<sup class="sup--uparrow">⌃</sup></button>
-                <button class="btn--textstyling" disabled>A<sup class="sup--downarrow">⌄</sup></button>
-                <button class="btn--textstyling" disabled>ABC</button>
+                <button class="btn--textstyling" value="bold" disabled>B</button>
+                <button class="btn--textstyling" value="underline" disabled>U</button>
+                <button class="btn--textstyling" value="italic" disabled>&#119868;</button>
+                <button class="btn--textstyling" value="increaseFont" disabled>A<sup class="sup--uparrow">⌃</sup></button>
+                <button class="btn--textstyling" value="decreaseFont" disabled>A<sup class="sup--downarrow">⌄</sup></button>
+                <button class="btn--textstyling" value="lineThrough" disabled>ABC</button>
             </div>
             <textarea name="" id="mainsection__input" rows="15"></textarea>
             <div class="mainsection__extraoperationwrapper">
@@ -64,8 +64,8 @@
                     <div class="mainsection__speechfeature">
                         <h2>Speech Feature</h2>
                         <div class="mainsection__operationbtns">
-                            <button class="btn--textstyling" disabled>Listen Now</button>
-                            <button class="btn--textstyling" disabled>Stop Now</button>
+                            <button class="btn--textstyling" value="startSpeech" disabled>Listen Now</button>
+                            <button class="btn--textstyling" value="stopSpeech" disabled>Stop Now</button>
                         </div>
                     </div>
                 </div>
