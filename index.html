@@ -18,6 +18,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="style.css">
+    <script defer type="module" src="./index.js"></script>
 </head>
 <body>
     <div class="homepage">
@@ -28,23 +29,23 @@
         <main class="mainsection">
             <h2 class="mainsection__heading">Enter Text To Analyze</h2>
             <div class="mainsection__stylingbtns">
-                <button class="btn--textstyling">B</button>
-                <button class="btn--textstyling">U</button>
-                <button class="btn--textstyling">&#119868;</button>
-                <button class="btn--textstyling">A<sup class="sup--uparrow">⌃</sup></button>
-                <button class="btn--textstyling">A<sup class="sup--downarrow">⌄</sup></button>
-                <button class="btn--textstyling">ABC</button>
+                <button class="btn--textstyling" disabled>B</button>
+                <button class="btn--textstyling" disabled>U</button>
+                <button class="btn--textstyling" disabled>&#119868;</button>
+                <button class="btn--textstyling" disabled>A<sup class="sup--uparrow">⌃</sup></button>
+                <button class="btn--textstyling" disabled>A<sup class="sup--downarrow">⌄</sup></button>
+                <button class="btn--textstyling" disabled>ABC</button>
             </div>
             <textarea name="" id="mainsection__input" rows="15"></textarea>
             <div class="mainsection__extraoperationwrapper">
                 <button class="btn--extradropdown">Extra Operations <img class="icon--downarrow" src="./assets/downarrow.svg" alt=""></button>
                 <div class="extraopration--dropdown">
                     <div class="mainsection__operationbtns">
-                        <button class="btn--textstyling">Convert to Uppercase</button>
-                        <button class="btn--textstyling">Convert to Lowercase</button>
-                        <button class="btn--textstyling">Remove Extra Space</button>
-                        <button class="btn--textstyling">Copy to Clipboard</button>
-                        <button class="btn--textstyling">Clear Text</button>
+                        <button class="btn--textstyling" value="ToUpperCase" disabled>Convert to Uppercase</button>
+                        <button class="btn--textstyling" value="ToLowerCase" disabled>Convert to Lowercase</button>
+                        <button class="btn--textstyling" value="ToTrim" disabled>Remove Extra Space</button>
+                        <button class="btn--textstyling" value="copy" disabled>Copy to Clipboard</button>
+                        <button class="btn--textstyling" value="clear" disabled>Clear Text</button>
                     </div>
         
                     <div class="mainsection__findreplace">
@@ -52,19 +53,19 @@
                         <div class="findreplace__section">
                             <div class="findreplace__findfeature">
                                 <input type="text" placeholder="Find Text..." id="find__text">
-                                <button class="btn--textstyling">Find</button>
+                                <button class="btn--textstyling" disabled>Find</button>
                             </div>
                             <div class="findreplace__replacefeature">
                                 <input type="text" placeholder="Replace Text..." id="replace__text">
-                                <button class="btn--textstyling">Replace</button>
+                                <button class="btn--textstyling" disabled>Replace</button>
                             </div>
                         </div>
                     </div>
                     <div class="mainsection__speechfeature">
                         <h2>Speech Feature</h2>
                         <div class="mainsection__operationbtns">
-                            <button class="btn--textstyling">Listen Now</button>
-                            <button class="btn--textstyling">Stop Now</button>
+                            <button class="btn--textstyling" disabled>Listen Now</button>
+                            <button class="btn--textstyling" disabled>Stop Now</button>
                         </div>
                     </div>
                 </div>

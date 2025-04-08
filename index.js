@@ -1,52 +1,63 @@
 class TextUtils {
-    constructor() {
+    constructor(inputfield) {
+        this.inputField=inputfield;
         this.initialEventListner()
     }
 
     initialEventListner() {
-        let textUtilsContainer = document.getElementById("text-utils-container");
-        console.log(textUtilsContainer);
-        
-        let inputStr = document.getElementById("input-text");
-        console.log(inputStr);
+        document.querySelectorAll('.btn--textstyling').forEach((element)=>{
+            element.addEventListener('click',(event)=>{
+                this.handleButtonClick(element);
+            })
+        });
 
-        textUtilsContainer.addEventListener("click", (e) => {
-            let target = e.target.closest("button").value;
-            switch(target) {
-                case "ToUpperCase":
-                    let result = this.toUpperCase(inputStr.value);
-                    // inputStr.value = result
-                    this.updateInputStr(inputStr, result);
-                    // console.log(target);
-                    // console.log(inputStr.value);
-                    // inputStr.value = toUpperCase(inputStr.value)
-                    // console.log(inputStr);
+        this.inputField.addEventListener('input',(event)=>{
+            document.querySelectorAll('.btn--textstyling').forEach((element)=>{
+                if(this.inputField.value===''){
+                    element.disabled=true;
+                }
+                else{
+                    element.disabled=false;
+                }
+            });
+        });
+    }
+
+    handleButtonClick(element){
+        const btnValue=element.value;
+
+        try {
+            switch(btnValue) {
+                case "ToUpperCase":{
+                    let result = this.toUpperCase(this.inputField.value);          
+                    this.updateInputStr(result);
                     break;
-
-                case "ToLowerCase": 
-                    let lowerStr = this.toLowerCase(inputStr.value);
-                    this.updateInputStr(inputStr, lowerStr);
-                    // inputStr.value = lowerStr;
+                }
+                case "ToLowerCase":{
+                    let lowerStr = this.toLowerCase(this.inputField.value);
+                    this.updateInputStr(lowerStr);
                     break;
-
-                case "ToTrim":
-                    let trimString = this.trimStr(inputStr.value);
-                    this.updateInputStr(inputStr, trimString); 
-                break;
-
-                case "clear":
-                    // let clearStr = this.clearInput(inputStr.value);
-                    this.updateInputStr(inputStr, '');  
-                break;
-
-                case "copy":
-                    this.copyToclipboard(inputStr);
-                break;
-
-                default: 
-                break    
+                }
+                case "ToTrim":{
+                    let trimString = this.trimStr(this.inputField.value);
+                    this.updateInputStr(trimString); 
+                    break;
+                }
+                case "clear":{
+                    this.updateInputStr('');
+                    break;
+                }
+                case "copy":{
+                    this.copyToclipboard(this.inputField);
+                    break;
+                }
+                default:{
+                    break;    
+                }
             }
-        })
+        } catch (error) {
+            throw new Error('Error while handling button click.');
+        }
     }
 
     copyToclipboard(inputStr) {
@@ -84,19 +95,16 @@ class TextUtils {
         console.log(newInputStr);
         
         
-        return newInputStr
+        return newInputStr;
     }
 
-    updateInputStr(inputStr, result) {
-        console.log(inputStr);
-        inputStr.value = result
-        
-    }
-
-   
+    updateInputStr(value) {
+        this.inputField.value = value;
+    }   
 }
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    new TextUtils()
+    const inputField=document.getElementById("mainsection__input");
+    new TextUtils(inputField)
 })
