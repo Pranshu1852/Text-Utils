@@ -4,6 +4,7 @@ class TextUtils {
         this.speechSynth=window.speechSynthesis;
         this.speechSynth.cancel();
         this.initialEventListner();
+        this.currentFontSize=1.5;
     }
 
     initialEventListner() {
@@ -98,6 +99,14 @@ class TextUtils {
                     this.speechSynth.cancel();
                     break;
                 }
+                case "increaseFont":{
+                    this.increaseFontSize(this.inputField);
+                    break;
+                }
+                case "decreaseFont":{
+                    this.decreaseFontSize(this.inputField);
+                    break;
+                }
                 default:{
                     break;    
                 }
@@ -145,7 +154,13 @@ class TextUtils {
     }
 
     increaseFontSize(inputField){
-        console.log(inputField);
+        inputField.style.fontSize=this.currentFontSize+0.5+'rem';
+        this.currentFontSize+=0.5;
+    }
+
+    decreaseFontSize(inputField){
+        inputField.style.fontSize=this.currentFontSize-0.5+'rem';
+        this.currentFontSize-=0.5;
     }
 
     convertToSpeech(enteredText) {
