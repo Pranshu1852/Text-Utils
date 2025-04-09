@@ -9,9 +9,9 @@ class TextUtils {
 
     initialEventListner() {
         const textSummary = document.querySelector(".textsummary__wordschar");
-            console.log(textSummary);
+            // console.log(textSummary);
             const textPreview = document.querySelector(".preview__text");
-            console.log(textPreview);
+            // console.log(textPreview);
         
         document.querySelectorAll('.btn--textstyling').forEach((element)=>{
             element.addEventListener('click',(event)=>{
@@ -20,10 +20,11 @@ class TextUtils {
         });
 
         this.inputField.addEventListener('input',(event)=>{
-            const textSummary = document.querySelector(".textsummary__wordschar");
-            console.log(textSummary);
+            const textSummaryWordchar = document.querySelector(".textsummary__wordschar");
+            const textSummaryMinutes = document.querySelector(".textsummary__minutes");
+            // console.log(textSummary);
             const textPreview = document.querySelector(".preview__text");
-            console.log(textPreview);
+            // console.log(textPreview);
            
 
             document.querySelectorAll('.btn--textstyling').forEach((element)=>{
@@ -36,11 +37,12 @@ class TextUtils {
             });
 
             if(this.inputField.textContent === "") {
-                textSummary.textContent = "0 Words, 0 Characters";
+                textSummaryWordchar.textContent = "0 Words, 0 Characters";
+                textSummaryMinutes.textContent = "0 Minutes Read";
                 textPreview.textContent = "Nothing to Preview!!"
             }
             else {
-                this.showTextSummary(textSummary);
+                this.showTextSummary(textSummaryWordchar,textSummaryMinutes);
                 this.showTextPreview(textPreview);
             }
         });
@@ -57,7 +59,7 @@ class TextUtils {
         })
 
         document.querySelector('.btn--extradropdown').addEventListener('click',(event)=>{
-            console.log('clicking');
+            // console.log('clicking');
             
             const dropdownElement=document.querySelector('.extraopration--dropdown');
             if(dropdownElement.style.display==='none'){
@@ -73,7 +75,7 @@ class TextUtils {
 
 
     showTextPreview(textPreview) {
-        console.log(this.inputField.textContent);
+        // console.log(this.inputField.textContent);
         if(this.inputField.textContent == "") {
             textPreview.textContent = "Nothing to Preview!!"
         }
@@ -84,14 +86,14 @@ class TextUtils {
         
     }
 
-    showTextSummary(textSummary) {
+    showTextSummary(textSummaryWordchar,textSummaryMinutes) {
         let wordsCount = 0;
         let charCount = 0;
 
         let inputStr = this.inputField.textContent;
         inputStr = inputStr.trim();
         let newInputStr = inputStr.split(" ");
-        console.log(newInputStr, "split");
+        // console.log(newInputStr, "split");
         
         
         let strArray = [];
@@ -108,9 +110,11 @@ class TextUtils {
         }
 
         if(this.inputField.textContent == "") {
-            textSummary.textContent = "0 Words, 0 Characters";
+            textSummaryWordchar.textContent = "0 Words, 0 Characters";
+            textSummaryMinutes.textContent = "0 Minutes Read";
         } else {
-            textSummary.textContent = `${wordsCount} Words, ${charCount} Characters`
+            textSummaryWordchar.textContent = `${wordsCount} Words, ${charCount} Characters`
+            textSummaryMinutes.textContent = `${(wordsCount/130).toFixed(2)} Minutes Read`;
         }
     }
 
@@ -175,7 +179,14 @@ class TextUtils {
                     break;
                 }
                 case "find":{
-                    this.findText();
+                    if(element.textContent==='Find'){
+                        this.findText();
+                        element.textContent='X';
+                    }
+                    else{
+                        this.removeHighlight();
+                        element.textContent='Find';
+                    }
                     break;
                 }
                 case "replace":{
@@ -200,7 +211,7 @@ class TextUtils {
 
     toUpperCase(inputStr) {
         inputStr = inputStr.toUpperCase();
-        console.log(inputStr);
+        // console.log(inputStr);
         return inputStr
     }
 
@@ -227,11 +238,11 @@ class TextUtils {
     }
 
     findText(){
-        console.log('running');
+        // console.log('running');
         
         const inputText=this.inputField.textContent;
         const findText=document.getElementById('find__text').value;
-        console.log(findText);        
+        // console.log(findText);        
 
         // if(findText.value==''){
         //     return;
@@ -240,20 +251,29 @@ class TextUtils {
         this.inputField.innerHTML=inputText.replaceAll(findText,`<mark>${findText}</mark>`);
     }
 
+    removeHighlight(){
+        console.log('inside');
+        
+        document.querySelectorAll('mark').forEach((element)=>{
+            const elementText=document.createTextNode(element.textContent);
+            document.getElementById('mainsection__input').replaceChild(elementText,element);
+        })
+    }
+
     replaceText(){
         const inputText=this.inputField.textContent;
         const findText=document.getElementById('find__text').value;
         const replaceText=document.getElementById('replace__text').value;
-        console.log(findText);
+        // console.log(findText);
 
-        this.inputField.innerHTML=inputText.replaceAll(findText,`<mark>${replaceText}</mark>`);
+        this.inputField.innerHTML=inputText.replaceAll(findText,replaceText);
     }
 
     toBold(){
         // window.getSelection().removeAllRanges();
         const selection = window.getSelection();
-        console.log(selection.anchorNode.parentElement);
-        console.log();
+        // console.log(selection.anchorNode.parentElement);
+        // console.log();
         
         
         if (selection.rangeCount > 0) {
@@ -261,22 +281,22 @@ class TextUtils {
             if(this.isAlready(selection.anchorNode.parentElement,'B')){
                 // const elementText=range.toString();
                 const newNode=document.createTextNode(selection.anchorNode.parentElement.textContent);
-                console.log(selection.anchorNode.parentElement.parentNode);
-                console.log(selection.anchorNode.parentElement);
+                // console.log(selection.anchorNode.parentElement.parentNode);
+                // console.log(selection.anchorNode.parentElement);
                 
                 selection.anchorNode.parentElement.parentNode.replaceChild(newNode,selection.anchorNode.parentElement);
                return; 
             }
-            console.log(selection);
+            // console.log(selection);
             const bold = document.createElement('b');
             range.surroundContents(bold);
             selection.removeAllRanges();
         }
 
         const textSummary = document.querySelector(".textsummary__wordschar");
-            console.log(textSummary);
+            // console.log(textSummary);
             const textPreview = document.querySelector(".preview__text");
-            console.log(textPreview);
+            // console.log(textPreview);
     }
 
     toItalic(){
@@ -313,7 +333,7 @@ class TextUtils {
     }
 
     isAlready(element,type){
-        console.log('tagname check: ',element.tagName);
+        // console.log('tagname check: ',element.tagName);
         
         return element.tagName===type;
     }
@@ -341,11 +361,12 @@ class TextUtils {
     updateInputStr(value) {
         const textPreview = document.querySelector(".preview__text");
         console.log(textPreview);
-        const textSummary = document.querySelector(".textsummary__wordschar");
+        const textSummaryWordchar = document.querySelector(".textsummary__wordschar");
+        const textSummaryMinutes = document.querySelector(".textsummary__minutes");
         
         this.inputField.textContent = value;
         this.showTextPreview(textPreview);
-        this.showTextSummary(textSummary);
+        this.showTextSummary(textSummaryWordchar,textSummaryMinutes);
     }   
 }
 

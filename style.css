@@ -275,6 +275,10 @@ a{
     color: var(--color-green2);
 }
 
+.mainsection__preview > p{
+    line-height: 1.5;
+}
+
 sup {
     font-size: 90%;
     margin: 0;
