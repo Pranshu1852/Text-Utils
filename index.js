@@ -136,9 +136,8 @@ class TextUtils {
     }
 
     copyToclipboard(inputStr) {
-        inputStr.select();
-        navigator.clipboard.writeText(inputStr.value);
-        alert("copied the text" + inputStr.value);
+        navigator.clipboard.writeText(inputStr.textContent);
+        alert("copied the text" + inputStr.textContent);
     }
 
     toUpperCase(inputStr) {
