@@ -8,6 +8,11 @@ class TextUtils {
     }
 
     initialEventListner() {
+        const textSummary = document.querySelector(".textsummary__wordschar");
+            console.log(textSummary);
+            const textPreview = document.querySelector(".preview__text");
+            console.log(textPreview);
+        
         document.querySelectorAll('.btn--textstyling').forEach((element)=>{
             element.addEventListener('click',(event)=>{
                 this.handleButtonClick(element);
@@ -15,6 +20,12 @@ class TextUtils {
         });
 
         this.inputField.addEventListener('input',(event)=>{
+            const textSummary = document.querySelector(".textsummary__wordschar");
+            console.log(textSummary);
+            const textPreview = document.querySelector(".preview__text");
+            console.log(textPreview);
+           
+
             document.querySelectorAll('.btn--textstyling').forEach((element)=>{
                 if(this.inputField.textContent===''){
                     element.disabled=true;
@@ -23,6 +34,15 @@ class TextUtils {
                     element.disabled=false;
                 }
             });
+
+            if(this.inputField.textContent === "") {
+                textSummary.textContent = "0 Words, 0 Characters";
+                textPreview.textContent = "Nothing to Preview!!"
+            }
+            else {
+                this.showTextSummary(textSummary);
+                this.showTextPreview(textPreview);
+            }
         });
 
         document.getElementById('find__text').addEventListener('input',(event)=>{
@@ -48,6 +68,50 @@ class TextUtils {
                 event.target.querySelector('img').style.transform='rotate(0deg)';
             };
         })
+
+    }
+
+
+    showTextPreview(textPreview) {
+        console.log(this.inputField.textContent);
+        if(this.inputField.textContent == "") {
+            textPreview.textContent = "Nothing to Preview!!"
+        }
+        else {
+            textPreview.textContent = this.inputField.textContent;
+        }
+        
+        
+    }
+
+    showTextSummary(textSummary) {
+        let wordsCount = 0;
+        let charCount = 0;
+
+        let inputStr = this.inputField.textContent;
+        inputStr = inputStr.trim();
+        let newInputStr = inputStr.split(" ");
+        console.log(newInputStr, "split");
+        
+        
+        let strArray = [];
+        for(let str of newInputStr) {   
+            if (str != " ") {
+                wordsCount ++;
+                for(let char of str) {
+                    if(char!==" ") {
+                        charCount++;
+                    }
+                }
+                strArray.push(str)
+            }
+        }
+
+        if(this.inputField.textContent == "") {
+            textSummary.textContent = "0 Words, 0 Characters";
+        } else {
+            textSummary.textContent = `${wordsCount} Words, ${charCount} Characters`
+        }
     }
 
     handleButtonClick(element){
@@ -208,6 +272,11 @@ class TextUtils {
             range.surroundContents(bold);
             selection.removeAllRanges();
         }
+
+        const textSummary = document.querySelector(".textsummary__wordschar");
+            console.log(textSummary);
+            const textPreview = document.querySelector(".preview__text");
+            console.log(textPreview);
     }
 
     toItalic(){
@@ -270,7 +339,13 @@ class TextUtils {
     }
 
     updateInputStr(value) {
+        const textPreview = document.querySelector(".preview__text");
+        console.log(textPreview);
+        const textSummary = document.querySelector(".textsummary__wordschar");
+        
         this.inputField.textContent = value;
+        this.showTextPreview(textPreview);
+        this.showTextSummary(textSummary);
     }   
 }
 
