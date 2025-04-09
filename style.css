@@ -142,6 +142,8 @@ a{
     border-radius: 20px;
     padding: 15px;
     font-size: 1.5rem;
+    overflow: auto;
+    scrollbar-width: none;
     box-sizing: border-box;
 }
 
@@ -309,6 +311,13 @@ button:active{
     opacity: 0.65;
 }
 
+b{
+    font-weight: bold;
+}
+
+i{
+    font-style: italic;
+}
 
 @keyframes rotateArrow {
     0%{

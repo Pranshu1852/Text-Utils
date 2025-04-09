@@ -25,7 +25,7 @@ class TextUtils {
             });
         });
 
-        this.inputField.addEventListener('select',(event)=>{
+        window.addEventListener('select',(event)=>{
             console.log(event);
             console.log(this.inputField.selectionStart);
             console.log(this.inputField.selectionEnd);
@@ -84,13 +84,6 @@ class TextUtils {
                     this.copyToclipboard(this.inputField);
                     break;
                 }
-                case "bold":{
-                    console.log(document.getSelection());
-                    console.log(document.getSelection().toString());
-                    
-                    this.toBold(this.inputField);
-                    break;
-                }
                 case "startSpeech":{
                     this.convertToSpeech(this.inputField.textContent);
                     break;
@@ -107,11 +100,37 @@ class TextUtils {
                     this.decreaseFontSize(this.inputField);
                     break;
                 }
+                case "bold":{
+                    this.toBold();
+                    break;
+                }
+                case "underline":{
+                    this.toUnderLine();
+                    break;
+                }
+                case "italic":{
+                    this.toItalic();
+                    break;
+                }
+                case "lineThrough":{
+                    this.toLineThrough();
+                    break;
+                }
+                case "find":{
+                    this.findText();
+                    break;
+                }
+                case "replace":{
+                    this.replaceText();
+                    break;
+                }
                 default:{
                     break;    
                 }
             }
         } catch (error) {
+            console.log(error);
+            
             throw new Error('Error while handling button click.');
         }
     }
@@ -149,8 +168,91 @@ class TextUtils {
         return newInputStr;
     }
 
-    toBold(inputField){
-        return inputField.style.fontWeight='bold';
+    findText(){
+        console.log('running');
+        
+        const inputText=this.inputField.textContent;
+        const findText=document.getElementById('find__text').value;
+        console.log(findText);        
+
+        // if(findText.value==''){
+        //     return;
+        // }
+        
+        this.inputField.innerHTML=inputText.replaceAll(findText,`<mark>${findText}</mark>`);
+    }
+
+    replaceText(){
+        const inputText=this.inputField.textContent;
+        const findText=document.getElementById('find__text').value;
+        const replaceText=document.getElementById('replace__text').value;
+        console.log(findText);
+
+        this.inputField.innerHTML=inputText.replaceAll(findText,`<mark>${replaceText}</mark>`);
+    }
+
+    toBold(){
+        // window.getSelection().removeAllRanges();
+        const selection = window.getSelection();
+        console.log(selection.anchorNode.parentElement);
+        console.log();
+        
+        
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            if(this.isAlready(selection.anchorNode.parentElement,'B')){
+                // const elementText=range.toString();
+                const newNode=document.createTextNode(selection.anchorNode.parentElement.textContent);
+                console.log(selection.anchorNode.parentElement.parentNode);
+                console.log(selection.anchorNode.parentElement);
+                
+                selection.anchorNode.parentElement.parentNode.replaceChild(newNode,selection.anchorNode.parentElement);
+               return; 
+            }
+            console.log(selection);
+            const bold = document.createElement('b');
+            range.surroundContents(bold);
+            selection.removeAllRanges();
+        }
+    }
+
+    toItalic(){
+        // window.getSelection().removeAllRanges();
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            const italic = document.createElement('i');
+            range.surroundContents(italic);
+            selection.removeAllRanges();
+        }
+    }
+
+    toUnderLine(){
+        // window.getSelection().removeAllRanges();
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            const underline = document.createElement('u');
+            range.surroundContents(underline);
+            selection.removeAllRanges();
+        }
+    }
+
+    toLineThrough(){
+        // window.getSelection().removeAllRanges();
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            const lineThrough = document.createElement('s');
+            range.surroundContents(lineThrough);
+            selection.removeAllRanges();
+        }
+    }
+
+    isAlready(element,type){
+        console.log('tagname check: ',element.tagName);
+        
+        return element.tagName===type;
     }
 
     increaseFontSize(inputField){
