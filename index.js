@@ -8,11 +8,6 @@ class TextUtils {
     }
 
     initialEventListner() {
-        const textSummary = document.querySelector(".textsummary__wordschar");
-            // console.log(textSummary);
-            const textPreview = document.querySelector(".preview__text");
-            // console.log(textPreview);
-        
         document.querySelectorAll('.btn--textstyling').forEach((element)=>{
             element.addEventListener('click',(event)=>{
                 this.handleButtonClick(element);
@@ -22,10 +17,7 @@ class TextUtils {
         this.inputField.addEventListener('input',(event)=>{
             const textSummaryWordchar = document.querySelector(".textsummary__wordschar");
             const textSummaryMinutes = document.querySelector(".textsummary__minutes");
-            // console.log(textSummary);
             const textPreview = document.querySelector(".preview__text");
-            // console.log(textPreview);
-           
 
             document.querySelectorAll('.btn--textstyling').forEach((element)=>{
                 if(this.inputField.textContent===''){
@@ -58,9 +50,7 @@ class TextUtils {
             }
         })
 
-        document.querySelector('.btn--extradropdown').addEventListener('click',(event)=>{
-            // console.log('clicking');
-            
+        document.querySelector('.btn--extradropdown').addEventListener('click',(event)=>{          
             const dropdownElement=document.querySelector('.extraopration--dropdown');
             if(dropdownElement.style.display==='none'){
                 dropdownElement.style.display='flex';
@@ -75,7 +65,6 @@ class TextUtils {
 
 
     showTextPreview(textPreview) {
-        // console.log(this.inputField.textContent);
         if(this.inputField.textContent == "") {
             textPreview.textContent = "Nothing to Preview!!"
         }
@@ -93,9 +82,7 @@ class TextUtils {
         let inputStr = this.inputField.textContent;
         inputStr = inputStr.trim();
         let newInputStr = inputStr.split(" ");
-        // console.log(newInputStr, "split");
-        
-        
+         
         let strArray = [];
         for(let str of newInputStr) {   
             if (str != " ") {
@@ -163,19 +150,19 @@ class TextUtils {
                     break;
                 }
                 case "bold":{
-                    this.toBold();
+                    this.toggleStyle('b');
                     break;
                 }
                 case "underline":{
-                    this.toUnderLine();
+                    this.toggleStyle('u');
                     break;
                 }
                 case "italic":{
-                    this.toItalic();
+                    this.toggleStyle('i');
                     break;
                 }
                 case "lineThrough":{
-                    this.toLineThrough();
+                    this.toggleStyle('s');
                     break;
                 }
                 case "find":{
@@ -197,9 +184,10 @@ class TextUtils {
                     break;    
                 }
             }
+
+            const textPreview = document.querySelector(".preview__text");
+            textPreview.innerHTML=this.inputField.innerHTML;
         } catch (error) {
-            console.log(error);
-            
             throw new Error('Error while handling button click.');
         }
     }
@@ -211,8 +199,7 @@ class TextUtils {
 
     toUpperCase(inputStr) {
         inputStr = inputStr.toUpperCase();
-        // console.log(inputStr);
-        return inputStr
+        return inputStr;
     }
 
     toLowerCase(inputStr) {
@@ -238,21 +225,15 @@ class TextUtils {
     }
 
     findText(){
-        // console.log('running');
-        
         const inputText=this.inputField.textContent;
         const findText=document.getElementById('find__text').value;
-        // console.log(findText);        
 
-        // if(findText.value==''){
-        //     return;
-        // }
-        
         this.inputField.innerHTML=inputText.replaceAll(findText,`<mark>${findText}</mark>`);
     }
 
     removeHighlight(){
-        console.log('inside');
+        document.getElementById('find__text').value='';
+        document.querySelector('button[value="find"]').textContent='Find';
         
         document.querySelectorAll('mark').forEach((element)=>{
             const elementText=document.createTextNode(element.textContent);
@@ -263,22 +244,24 @@ class TextUtils {
     replaceText(){
         const inputText=this.inputField.textContent;
         const findText=document.getElementById('find__text').value;
-        const replaceText=document.getElementById('replace__text').value;
-        // console.log(findText);
 
-        this.inputField.innerHTML=inputText.replaceAll(findText,replaceText);
+        if(findText==''){
+            return;
+        }
+
+        const replaceTextElement=document.getElementById('replace__text');
+
+        this.inputField.innerHTML=inputText.replaceAll(findText,replaceTextElement.value);
+        replaceTextElement.value='';
+        this.removeHighlight();
     }
 
-    toBold(){
-        // window.getSelection().removeAllRanges();
+    toggleStyle(styleTag){
         const selection = window.getSelection();
-        // console.log(selection.anchorNode.parentElement);
-        // console.log();
-        
-        
         if (selection.rangeCount > 0) {
             const range = selection.getRangeAt(0);
-            if(this.isAlready(selection.anchorNode.parentElement,'B')){
+
+            if(this.isAlready(selection.anchorNode.parentElement,styleTag)){
                 // const elementText=range.toString();
                 const newNode=document.createTextNode(selection.anchorNode.parentElement.textContent);
                 // console.log(selection.anchorNode.parentElement.parentNode);
@@ -287,46 +270,8 @@ class TextUtils {
                 selection.anchorNode.parentElement.parentNode.replaceChild(newNode,selection.anchorNode.parentElement);
                return; 
             }
-            // console.log(selection);
-            const bold = document.createElement('b');
-            range.surroundContents(bold);
-            selection.removeAllRanges();
-        }
 
-        const textSummary = document.querySelector(".textsummary__wordschar");
-            // console.log(textSummary);
-            const textPreview = document.querySelector(".preview__text");
-            // console.log(textPreview);
-    }
-
-    toItalic(){
-        // window.getSelection().removeAllRanges();
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) {
-            const range = selection.getRangeAt(0);
-            const italic = document.createElement('i');
-            range.surroundContents(italic);
-            selection.removeAllRanges();
-        }
-    }
-
-    toUnderLine(){
-        // window.getSelection().removeAllRanges();
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) {
-            const range = selection.getRangeAt(0);
-            const underline = document.createElement('u');
-            range.surroundContents(underline);
-            selection.removeAllRanges();
-        }
-    }
-
-    toLineThrough(){
-        // window.getSelection().removeAllRanges();
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) {
-            const range = selection.getRangeAt(0);
-            const lineThrough = document.createElement('s');
+            const lineThrough = document.createElement(styleTag);
             range.surroundContents(lineThrough);
             selection.removeAllRanges();
         }
@@ -335,7 +280,7 @@ class TextUtils {
     isAlready(element,type){
         // console.log('tagname check: ',element.tagName);
         
-        return element.tagName===type;
+        return element.tagName===type.toUpperCase();
     }
 
     increaseFontSize(inputField){
